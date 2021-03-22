@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ChooseSetVC: UIViewController {
     
     @IBOutlet weak var setsTableView: UITableView!
 
@@ -30,16 +30,13 @@ class ViewController: UIViewController {
             }
         }
     }
-    
-    
-    
-    
+ 
 }
 
 
 //MARK: - UITableViewDataSource
 
-extension ViewController : UITableViewDataSource{
+extension ChooseSetVC : UITableViewDataSource{
     //Number of rows will be the size of the array containing all the sets
     // So can't be set until the json data is back from the api
     //The api data is requested on viewDidLoad
@@ -55,7 +52,7 @@ extension ViewController : UITableViewDataSource{
     }
 }
 
-extension ViewController : UITableViewDelegate{
+extension ChooseSetVC : UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //tableView.deselectRow(at: indexPath, animated: true)
@@ -64,7 +61,7 @@ extension ViewController : UITableViewDelegate{
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "goToPackOpener"){
-            let destination = segue.destination as! PackOpenerViewController
+            let destination = segue.destination as! PackOpenerVC
             destination.setId = listOfSets[(setsTableView.indexPathForSelectedRow?.row)!].id
             destination.setLogo = listOfSets[(setsTableView.indexPathForSelectedRow?.row)!].logo
         }

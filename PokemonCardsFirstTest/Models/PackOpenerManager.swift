@@ -5,8 +5,13 @@
 //  Created by Greg Ross on 20/03/2021.
 //
 import UIKit
+import Firebase
 
 struct PackOpenerManager{
+    
+    var userEmail = Auth.auth().currentUser?.email
+    //Create reference to the database
+    let db = Firestore.firestore()
     
     let apiUrl = "https://api.pokemontcg.io/v2/cards?q=set.id:"
     func getCardsFromSelectedSet(_ setId : String, result : @escaping ([Card]) -> Void){
@@ -122,6 +127,25 @@ struct PackOpenerManager{
         }
         return randomRareCard!
     }
+    
+    
+    
+    func saveCardsToFirestore(cards : [Card]){
+        //This loops through all the 10 cards from the opened pack
+        for card in cards{
+            //Check to see if there is a logged in user (there should always be)
+            if let user = self.userEmail{
+                self.db.collection("\(user)").addDocument(data: ["Card" : [card.id, card.name, card.imageString, card.rarity]]) { (error) in
+                    if let e = error{
+                        print("Error saving cards to firestore, \(e.localizedDescription)")
+                    }else{
+                        print("Successfully saved data to firestore")
+                    }
+                }
+            }
+        }
+    }
+    
 }
 
 

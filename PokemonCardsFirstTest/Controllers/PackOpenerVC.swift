@@ -8,10 +8,9 @@
 import UIKit
 import Firebase
 
-class PackOpenerViewController: UIViewController {
+class PackOpenerVC: UIViewController {
     
     @IBOutlet weak var cardImage: UIImageView!
-    @IBOutlet weak var openPackLabel: UILabel!
     @IBOutlet weak var openPackButtonOutlet: UIButton!
     @IBOutlet weak var nextCardButtonOutlet: UIButton!
     @IBOutlet weak var tapLabel: UILabel!
@@ -30,14 +29,8 @@ class PackOpenerViewController: UIViewController {
         title = "Open a pack"
         nextCardButtonOutlet.isHidden = true
         tapLabel.isHidden = true
-        var charIndex = 2.0
-        let titleText = "Open Pack"
-        for letter in titleText{
-            Timer.scheduledTimer(withTimeInterval: 0.1 * charIndex, repeats: false) { (timer) in
-                self.openPackLabel.text?.append(letter)
-            }
-            charIndex += 1
-        }
+        
+        
         
         //This sets the cardImage as the logo of the selected set
         if setLogo != nil{
@@ -56,26 +49,15 @@ class PackOpenerViewController: UIViewController {
             packOpnerManager.getCardsFromSelectedSet(safeSetId) { (listOfRandomCards) in
                 //This sets the cards list as the cards that comeback from the closure
                 self.cards = listOfRandomCards
-                
-                //This loops through all the 10 cards from the opened pack
-                for card in self.cards{
-                    //Check to see if there is a logged in user (there should always be)
-                    if let user = self.userEmail{
-                        self.db.collection("\(user)").addDocument(data: ["Card" : [card.id, card.name, card.imageString, card.rarity]]) { (error) in
-                            if let e = error{
-                                print("Error saving cards to firestore, \(e.localizedDescription)")
-                            }else{
-                                print("Successfully saved data to firestore")
-                            }
-                        }
-                    }
-                }
+                //Call function to save the opened pack to firestore
+                self.packOpnerManager.saveCardsToFirestore(cards: self.cards)
+                //Set the button to hidden, as user cannot open another pack
+                //until they have seen all the cards in the opened pack
                 self.nextCardButtonOutlet.isHidden = false
             }
         }
         //Dont let the user open another pack when a pack is being displayed
         openPackButtonOutlet.isHidden = true
-        openPackLabel.isHidden = true
         //This makes the set logo dissapear
         UIView.animate(withDuration: 1.5, delay: 0.2, options: .curveEaseOut) {
             self.cardImage.alpha = 0
@@ -112,7 +94,6 @@ class PackOpenerViewController: UIViewController {
         } else{
             print("No more cards")
             openPackButtonOutlet.isHidden = false
-            openPackLabel.isHidden = false
             tapLabel.isHidden = true
             //This sets the cardImage as the logo of the selected set
             if setLogo != nil{

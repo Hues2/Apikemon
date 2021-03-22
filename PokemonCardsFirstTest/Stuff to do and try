@@ -32,11 +32,20 @@ Create new root screen where user can select to see their collection, look at se
 
 Create segue to take user to their collection --> Done
 
-Read users cards from firestore
+Read users cards from firestore --> Done
 
-Currently the data isn't reading out the in the same order it reads in, so maybe implement time stamp or just sort them by quality when they get added to the table view
+Use table view to display the users cards --> Done
 
-Use table view to display the users cards
+Create custom reusable cell for users collection of cards --> Done
+
+Find out how to make the card collection table view not so laggy --> Done
+
+Make the saving cards to firestore a method in the model, instead of the controller --> Done
+
+-----------------------------------------TO-DO-----------------------------------------------------
+Display loading for the table views that take a while to load (Users collection and market)
+
+Sort cards by rarity in users collection
 
 Set delegates to handle api errors
 
@@ -48,9 +57,5 @@ In this screen add a button in top right (in navigation controller) that lets th
 
 When user adds to market make a pop up confirming it
 
-
-
-
-
-
+Maybe add time stamp to cards added to firestore, so that users can sort their collection by most recently opened
 

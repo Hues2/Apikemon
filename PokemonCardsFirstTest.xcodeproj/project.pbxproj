@@ -8,10 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		2E2EC1F32607F04F00062035 /* MainPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2EC1F22607F04F00062035 /* MainPageVC.swift */; };
+		2E3FC5B52608C7FD001D4E1B /* MyCollectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3FC5B42608C7FD001D4E1B /* MyCollectionManager.swift */; };
+		2E3FC5B92608CE26001D4E1B /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3FC5B72608CE26001D4E1B /* CardCell.swift */; };
+		2E3FC5BA2608CE26001D4E1B /* CardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E3FC5B82608CE26001D4E1B /* CardCell.xib */; };
 		2E43256E260561E800CC9BDC /* SetsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E43256D260561E800CC9BDC /* SetsManager.swift */; };
 		2E4325712605623300CC9BDC /* SetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4325702605623300CC9BDC /* SetData.swift */; };
 		2E4325782605661100CC9BDC /* SetOfCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4325772605661100CC9BDC /* SetOfCards.swift */; };
-		2E4325832605949300CC9BDC /* PackOpenerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4325822605949300CC9BDC /* PackOpenerViewController.swift */; };
+		2E4325832605949300CC9BDC /* PackOpenerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4325822605949300CC9BDC /* PackOpenerVC.swift */; };
 		2E46C4232606848000F5AC8F /* PackOpenerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E46C4222606848000F5AC8F /* PackOpenerManager.swift */; };
 		2E46C42726068AA300F5AC8F /* CardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E46C42626068AA300F5AC8F /* CardData.swift */; };
 		2E46C42A26068D0800F5AC8F /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E46C42926068D0800F5AC8F /* Card.swift */; };
@@ -21,7 +24,7 @@
 		2E9ABD812607E6E600879F46 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9ABD802607E6E600879F46 /* RegisterVC.swift */; };
 		2EAA6E9B2605419000E33E24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAA6E9A2605419000E33E24 /* AppDelegate.swift */; };
 		2EAA6E9D2605419000E33E24 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAA6E9C2605419000E33E24 /* SceneDelegate.swift */; };
-		2EAA6E9F2605419000E33E24 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAA6E9E2605419000E33E24 /* ViewController.swift */; };
+		2EAA6E9F2605419000E33E24 /* ChooseSetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAA6E9E2605419000E33E24 /* ChooseSetVC.swift */; };
 		2EAA6EA22605419000E33E24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EAA6EA02605419000E33E24 /* Main.storyboard */; };
 		2EAA6EA42605419100E33E24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EAA6EA32605419100E33E24 /* Assets.xcassets */; };
 		2EAA6EA72605419100E33E24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EAA6EA52605419100E33E24 /* LaunchScreen.storyboard */; };
@@ -32,10 +35,13 @@
 
 /* Begin PBXFileReference section */
 		2E2EC1F22607F04F00062035 /* MainPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageVC.swift; sourceTree = "<group>"; };
+		2E3FC5B42608C7FD001D4E1B /* MyCollectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionManager.swift; sourceTree = "<group>"; };
+		2E3FC5B72608CE26001D4E1B /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
+		2E3FC5B82608CE26001D4E1B /* CardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCell.xib; sourceTree = "<group>"; };
 		2E43256D260561E800CC9BDC /* SetsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsManager.swift; sourceTree = "<group>"; };
 		2E4325702605623300CC9BDC /* SetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetData.swift; sourceTree = "<group>"; };
 		2E4325772605661100CC9BDC /* SetOfCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetOfCards.swift; sourceTree = "<group>"; };
-		2E4325822605949300CC9BDC /* PackOpenerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackOpenerViewController.swift; sourceTree = "<group>"; };
+		2E4325822605949300CC9BDC /* PackOpenerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackOpenerVC.swift; sourceTree = "<group>"; };
 		2E46C4222606848000F5AC8F /* PackOpenerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackOpenerManager.swift; sourceTree = "<group>"; };
 		2E46C42626068AA300F5AC8F /* CardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardData.swift; sourceTree = "<group>"; };
 		2E46C42926068D0800F5AC8F /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
@@ -46,7 +52,7 @@
 		2EAA6E972605419000E33E24 /* PokemonCardsFirstTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokemonCardsFirstTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EAA6E9A2605419000E33E24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2EAA6E9C2605419000E33E24 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2EAA6E9E2605419000E33E24 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2EAA6E9E2605419000E33E24 /* ChooseSetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseSetVC.swift; sourceTree = "<group>"; };
 		2EAA6EA12605419000E33E24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2EAA6EA32605419100E33E24 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2EAA6EA62605419100E33E24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -109,6 +115,8 @@
 			isa = PBXGroup;
 			children = (
 				2EAA6EA02605419000E33E24 /* Main.storyboard */,
+				2E3FC5B72608CE26001D4E1B /* CardCell.swift */,
+				2E3FC5B82608CE26001D4E1B /* CardCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -116,8 +124,8 @@
 		2EAA6EB0260541BC00E33E24 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2EAA6E9E2605419000E33E24 /* ViewController.swift */,
-				2E4325822605949300CC9BDC /* PackOpenerViewController.swift */,
+				2EAA6E9E2605419000E33E24 /* ChooseSetVC.swift */,
+				2E4325822605949300CC9BDC /* PackOpenerVC.swift */,
 				2E9ABD672607E02700879F46 /* WelcomeVC.swift */,
 				2E9ABD802607E6E600879F46 /* RegisterVC.swift */,
 				2E2EC1F22607F04F00062035 /* MainPageVC.swift */,
@@ -136,6 +144,7 @@
 				2E46C42626068AA300F5AC8F /* CardData.swift */,
 				2E46C42926068D0800F5AC8F /* Card.swift */,
 				2EBB2D7B2608A0B100C988C4 /* Props.swift */,
+				2E3FC5B42608C7FD001D4E1B /* MyCollectionManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -217,6 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2EAA6EA72605419100E33E24 /* LaunchScreen.storyboard in Resources */,
+				2E3FC5BA2608CE26001D4E1B /* CardCell.xib in Resources */,
 				2EAA6EA42605419100E33E24 /* Assets.xcassets in Resources */,
 				2E9ABD6B2607E43800879F46 /* GoogleService-Info.plist in Resources */,
 				2EAA6EA22605419000E33E24 /* Main.storyboard in Resources */,
@@ -273,11 +283,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2EAA6E9F2605419000E33E24 /* ViewController.swift in Sources */,
+				2EAA6E9F2605419000E33E24 /* ChooseSetVC.swift in Sources */,
+				2E3FC5B52608C7FD001D4E1B /* MyCollectionManager.swift in Sources */,
 				2EAA6E9B2605419000E33E24 /* AppDelegate.swift in Sources */,
-				2E4325832605949300CC9BDC /* PackOpenerViewController.swift in Sources */,
+				2E4325832605949300CC9BDC /* PackOpenerVC.swift in Sources */,
 				2E43256E260561E800CC9BDC /* SetsManager.swift in Sources */,
 				2E4325782605661100CC9BDC /* SetOfCards.swift in Sources */,
+				2E3FC5B92608CE26001D4E1B /* CardCell.swift in Sources */,
 				2E46C4232606848000F5AC8F /* PackOpenerManager.swift in Sources */,
 				2E66DA142608288800329EF5 /* MyCollectionVC.swift in Sources */,
 				2E46C42726068AA300F5AC8F /* CardData.swift in Sources */,

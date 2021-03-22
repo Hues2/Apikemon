@@ -11,65 +11,67 @@ import Firebase
 class MyCollectionVC: UIViewController {
     @IBOutlet weak var myCollectionTableView: UITableView!
     
-    let db = Firestore.firestore()
-    var userEmail = Auth.auth().currentUser?.email
+    var myCollectionManager = MyCollectionManager()
     var cards : [Card] = []
-    var dic :  [String : [String]] = [:]
+    var listOfImageData : [Data] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //myCollectionTableView.delegate = self
-        myCollectionTableView.dataSource = self
-        
-        //If user is logged in, then it loads their collection of cards
-        if let user = userEmail{
-            db.collection(user).getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    print("Error getting cards: \(err)")
-                } else {
-                    //In each document there is a key "Card" with an array as a value
-                    //I need to access each string within the array
-                    for document in querySnapshot!.documents {
-                        //I know that the cards saved as a dictionary with an array of strings
-                        //as values so I cast it as that with as!
-                        self.dic = document.data() as! [String : [String]]
-                        var id : String = ""
-                        var name : String = ""
-                        var rarity : String = ""
-                        var imageUrl : String = ""
-                        for (_, value) in self.dic{
-                            id = value[0]
-                            name = value[1]
-                            rarity = value [2]
-                            imageUrl = value[3]
-                        }
-                        let card = Card(id: id, name: name, imageString: imageUrl, rarity: rarity)
-                        self.cards.append(card)
-                    }
-                    print(self.cards.count)
-                    print(self.cards)
-                    //Once the cards list is full, reload the tableview
-                    self.myCollectionTableView.reloadData()
-                }
-            }
+        //Register the nib
+        registerTheCell()
+        //Assign the class as the delegate and data source of the table view
+        asignDelegates()
+        //Fetch the API data
+        myCollectionManager.getCards { (listOfCards) in
+            //This populates the list of the users cards
+            self.cards = listOfCards
+            //This transforms the image strings int data
+            self.listOfImageData =  self.myCollectionManager.populateImageDataList(cards: self.cards)
+            //Once the cards and imageData lists are populated, reload the tableview
+            self.myCollectionTableView.reloadData()
         }
-        
+    }
+    
+    func asignDelegates(){
+        myCollectionTableView.delegate = self
+        myCollectionTableView.dataSource = self
+    }
+    
+    func registerTheCell(){
+        myCollectionTableView.register(UINib(nibName: "CardCell", bundle: nil), forCellReuseIdentifier: "CardCell")
     }
 
+    
+    
 }
+
+
+
+
+//MARK: - UITableViewDataSource
+//Handles with addign the cards to the table
 
 extension MyCollectionVC : UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cards.count
     }
     
+    //As the user swipes on the screen this function will get called a lot
+    //So don't make this method do expensive actions, for example transforming
+    //the image strings into data
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let name = cards[indexPath.row].name
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MyCollectionCardCell", for: indexPath)
-        cell.textLabel?.text = name
+        let image = listOfImageData[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CardCell", for: indexPath) as! CardCell
+        cell.cardNameLabel.text = name
+        cell.rightImageView.image = UIImage(data: image)
+
         return cell
     }
 }
+
+//MARK: - UITableViewDelegate
+//Hnadles with the user interaction with the cells in the table
 
 extension MyCollectionVC : UITableViewDelegate{
     

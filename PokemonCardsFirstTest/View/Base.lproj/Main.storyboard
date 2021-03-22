@@ -116,7 +116,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wsV-qN-sLG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1107.2463768115942" y="1579.6875"/>
+            <point key="canvasLocation" x="713" y="1556"/>
         </scene>
         <!--Main PageVC-->
         <scene sceneID="MKM-Ul-Xkn">
@@ -148,7 +148,7 @@
                                 <rect key="frame" x="98" y="518" width="219" height="67"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
-                                <state key="normal" title="All Cards"/>
+                                <state key="normal" title="Market"/>
                                 <connections>
                                     <action selector="allCardsPressed:" destination="aha-aq-JRi" eventType="touchUpInside" id="sNl-Rg-TkP"/>
                                 </connections>
@@ -185,16 +185,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="I0f-k4-DSq">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyCollectionCardCell" id="lGz-20-han">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lGz-20-han" id="Ide-rD-aIA">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Qhb-hV-TiB"/>
@@ -215,10 +205,10 @@
             </objects>
             <point key="canvasLocation" x="3115.9420289855075" y="49.553571428571423"/>
         </scene>
-        <!--View Controller-->
+        <!--Choose SetVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="ViewController" customModule="PokemonCardsFirstTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="ChooseSetVC" customModule="PokemonCardsFirstTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -276,10 +266,10 @@
             </objects>
             <point key="canvasLocation" x="3117.3913043478265" y="764.73214285714278"/>
         </scene>
-        <!--Pack Opener View Controller-->
+        <!--Pack OpenerVC-->
         <scene sceneID="1fC-Ny-keP">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="9Zf-o3-jn6" customClass="PackOpenerViewController" customModule="PokemonCardsFirstTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="9Zf-o3-jn6" customClass="PackOpenerVC" customModule="PokemonCardsFirstTest" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oKY-DD-cXy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -299,22 +289,16 @@
                                 <rect key="frame" x="93" y="779" width="237" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                <state key="normal" title="Open Pack"/>
                                 <connections>
                                     <action selector="openPackButton:" destination="9Zf-o3-jn6" eventType="touchUpInside" id="t5m-CU-rXg"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w2u-68-PhY">
-                                <rect key="frame" x="93" y="779" width="238" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
-                                <color key="textColor" name="AccentColor"/>
-                                <color key="highlightedColor" name="AccentColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tap to see next card!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ddj-Jk-aEy">
                                 <rect key="frame" x="91" y="180" width="233" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="AccentColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -326,7 +310,6 @@
                         <outlet property="cardImage" destination="iUF-YV-5Ig" id="lcb-qG-47g"/>
                         <outlet property="nextCardButtonOutlet" destination="jGu-Ko-rsS" id="la4-HQ-W3D"/>
                         <outlet property="openPackButtonOutlet" destination="O5F-ly-twC" id="Ovs-np-fHl"/>
-                        <outlet property="openPackLabel" destination="w2u-68-PhY" id="2Dy-u1-qeL"/>
                         <outlet property="tapLabel" destination="Ddj-Jk-aEy" id="s9c-xR-jAf"/>
                     </connections>
                 </viewController>
@@ -354,7 +337,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="QrE-eq-xU6"/>
+        <segue reference="VwC-km-r7E"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="CardBackImage" width="132.5" height="186"/>
