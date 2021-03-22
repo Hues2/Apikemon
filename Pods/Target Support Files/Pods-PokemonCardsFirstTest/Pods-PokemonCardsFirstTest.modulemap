@@ -1,0 +1,6 @@
+framework module Pods_PokemonCardsFirstTest {
+  umbrella header "Pods-PokemonCardsFirstTest-umbrella.h"
+
+  export *
+  module * { export * }
+}

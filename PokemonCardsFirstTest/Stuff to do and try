@@ -1,0 +1,56 @@
+Request Pokemon sets from API --> Done
+
+Set the title of each set as a new cell in the table view --> Done
+
+On click of each set, take the user to the next view --> Done
+
+User can click a button to open a pack --> Done
+
+Call API to get 10 random cards from API (cards have to belong to the set) --> Done
+
+Diplsay 10 cards on top of each other, when tapped the top card dissapears --> Done
+
+Cards fade in and out --> Done
+
+Hide open pack button until they have seen all the cards --> Done
+
+Don't allow cards to be repeated --> Done
+
+Packs give 6 common, 3 uncommon and 1 rare --> Done (WORKS FOR BASE SET FOR NOW)
+
+Cards displayed will be in order of their rarity during pack opening --> Done
+
+Have to check all different types of rares there are and add the to the .contains in the get rare card method --> Done
+
+Add firebase auth --> Done
+
+Add firebase cloud firestore to store users cards --> Done
+
+Add cards to users collection after user has seen all the cards from a pack --> Done
+
+Create new root screen where user can select to see their collection, look at sets to open packs or an option to take them to a sreen with a collection sort o all the different types of pokemon in the API --> Done
+
+Create segue to take user to their collection --> Done
+
+Read users cards from firestore
+
+Currently the data isn't reading out the in the same order it reads in, so maybe implement time stamp or just sort them by quality when they get added to the table view
+
+Use table view to display the users cards
+
+Set delegates to handle api errors
+
+Call endpoint "/cards" on to display all the posible cards in a table view in Card Collection
+
+When a user clicks on a card in a table view, take them to a different screen that will display more in depth info about the card (maybe call api with the card id)
+
+In this screen add a button in top right (in navigation controller) that lets the user add the card to the market
+
+When user adds to market make a pop up confirming it
+
+
+
+
+
+
+
