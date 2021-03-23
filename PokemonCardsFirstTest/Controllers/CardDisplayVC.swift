@@ -7,7 +7,12 @@
 
 import UIKit
 
-class CardDisplayVC: UIViewController {
+
+class CardDisplayVC: UIViewController, CardDisplayDelegate {
+    func popToCollection() {
+        navigationController?.popViewController(animated: true)
+    }
+    
     @IBOutlet weak var cardImage: UIImageView!
 
     var cardDisplayManager = CardDisplayManager()
@@ -15,9 +20,11 @@ class CardDisplayVC: UIViewController {
     var cardName : String?
     var cardId : String?
     var card : Card?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        cardDisplayManager.delegate = self
 
         if let safeName = card?.name{
             title = safeName
@@ -39,12 +46,5 @@ class CardDisplayVC: UIViewController {
         
         
     }
-    
-    @IBAction func sellButton(_ sender: UIButton) {
-        
-       
-
-    }
-    
     
 }

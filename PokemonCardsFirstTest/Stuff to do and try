@@ -48,13 +48,20 @@ Sort cards by rarity in users collection --> Done (Maybe bad time complexity)
 
 When a user clicks on a card in a table view, take them to a different screen that will display the card in big picture --> Done
 
------------------------------------------TO-DO-----------------------------------------------------
+Before deleteing the card add the card and the price (Do the same method of saving the card, but add the price to the array value) --> Done
+Delete the document by the id --> Done
+
+Add card to market collection when pressed sell --> Done
+Remove from users collection when pressed sell --> Done
+Take back to collection when sold --> Done
 
 Deselect rows in table views when pressed --> Done
 
-Add card to market collection when pressed sell
-Remove from users collection when pressed sell
-Take back to collection when sold
+
+
+-----------------------------------------TO-DO-----------------------------------------------------
+
+
 Add spinner when adding and deleting
 Add confirmation of added to market when taken back to users collection,  maybe via another alert box and an ok button
 
@@ -62,13 +69,10 @@ Add constants file
 
 Set delegates to handle api errors
 
-In this screen add a button in top right (in navigation controller) that lets the user add the card to the market
+Make alerts for networking errors and loading from database errors
 
 When user adds to market make a pop up confirming it
 
 Maybe add time stamp to cards added to firestore, so that users can sort their collection by most recently opened
 
-
-
-Before deleteing the card add the card and the price (Do the same method of saving the card, but add the price to the array value)
-Delete the document by the id maybe, so pass the id through the segue to the card display
+Make users have a document called wallet that contains just a number, for example: ["Amount" : 50]. Add this when the user registers
