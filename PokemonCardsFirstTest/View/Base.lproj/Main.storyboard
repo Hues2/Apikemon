@@ -66,6 +66,7 @@
                     <connections>
                         <outlet property="emailTF" destination="47u-jG-ubf" id="nC0-sP-WNw"/>
                         <outlet property="passwordTF" destination="yAY-kJ-lBR" id="MO0-WC-odK"/>
+                        <outlet property="titleLabel" destination="UPf-Ra-aY8" id="a2V-rB-ev9"/>
                         <segue destination="l2C-0w-hzS" kind="show" identifier="WelcomeToRegisterPage" id="h8m-hQ-hky"/>
                         <segue destination="aha-aq-JRi" kind="show" identifier="WelcomeToMainPage" id="QrE-eq-xU6"/>
                     </connections>
@@ -182,6 +183,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" id="tH8-dS-qu1">
+                                <rect key="frame" x="0.0" y="380" width="414" height="157"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="I0f-k4-DSq">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -198,12 +204,44 @@
                     </view>
                     <navigationItem key="navigationItem" id="tQS-4a-1tJ"/>
                     <connections>
+                        <outlet property="loadingIndicator" destination="tH8-dS-qu1" id="m0W-sB-ciE"/>
                         <outlet property="myCollectionTableView" destination="I0f-k4-DSq" id="oLU-aT-N1t"/>
+                        <segue destination="2ex-sp-12y" kind="show" identifier="CollectionToCardDisplay" id="pHV-mg-5AX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cxd-yk-ejx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3115.9420289855075" y="49.553571428571423"/>
+        </scene>
+        <!--Card DisplayVC-->
+        <scene sceneID="sqg-eg-ah9">
+            <objects>
+                <viewController id="2ex-sp-12y" customClass="CardDisplayVC" customModule="PokemonCardsFirstTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5Ge-iQ-ffw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wzP-zf-SiC">
+                                <rect key="frame" x="10" y="98" width="394" height="754"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Lwq-LR-PaD"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Lwq-LR-PaD" firstAttribute="trailing" secondItem="wzP-zf-SiC" secondAttribute="trailing" constant="10" id="3kg-Ab-KEo"/>
+                            <constraint firstItem="wzP-zf-SiC" firstAttribute="leading" secondItem="Lwq-LR-PaD" secondAttribute="leading" constant="10" id="JO5-EE-KvY"/>
+                            <constraint firstItem="Lwq-LR-PaD" firstAttribute="bottom" secondItem="wzP-zf-SiC" secondAttribute="bottom" constant="10" id="QJu-IK-AGE"/>
+                            <constraint firstItem="wzP-zf-SiC" firstAttribute="top" secondItem="Lwq-LR-PaD" secondAttribute="top" constant="10" id="u01-ec-gYn"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="fv2-rP-bGZ"/>
+                    <connections>
+                        <outlet property="cardImage" destination="wzP-zf-SiC" id="9s6-bk-Gsy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zmA-VM-CwM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4160.8695652173919" y="49.553571428571423"/>
         </scene>
         <!--Choose SetVC-->
         <scene sceneID="tne-QT-ifu">
@@ -337,7 +375,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="VwC-km-r7E"/>
+        <segue reference="QrE-eq-xU6"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="CardBackImage" width="132.5" height="186"/>

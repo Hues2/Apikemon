@@ -20,25 +20,20 @@ class PackOpenerVC: UIViewController {
     var packOpnerManager = PackOpenerManager()
     var cards : [Card] = []
     var indexOfCard = 0
-    var userEmail = Auth.auth().currentUser?.email
-    //Create reference to the database
-    let db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Open a pack"
-        nextCardButtonOutlet.isHidden = true
-        tapLabel.isHidden = true
-        
-        
-        
+        hideNextCardButton()
         //This sets the cardImage as the logo of the selected set
         if setLogo != nil{
-            if let logoUrl = URL(string: setLogo!){
-                let logoData = try! Data(contentsOf: logoUrl)
-                cardImage.image = UIImage(data: logoData)
-            }
+            displayLogo()
         }
+    }
+    
+    func hideNextCardButton(){
+        nextCardButtonOutlet.isHidden = true
+        tapLabel.isHidden = true
     }
     
     // Call the API info with the setID, passed through with the segue
@@ -59,15 +54,15 @@ class PackOpenerVC: UIViewController {
         //Dont let the user open another pack when a pack is being displayed
         openPackButtonOutlet.isHidden = true
         //This makes the set logo dissapear
-        UIView.animate(withDuration: 1.5, delay: 0.2, options: .curveEaseOut) {
-            self.cardImage.alpha = 0
+        fadeOut()
+        DispatchQueue.main.async {
+            //And this makes the back of the card appear, meaning that the pack has been opened
+            UIView.animate(withDuration: 1.5, delay: 0.2, options: .curveEaseOut) {
+                self.cardImage.image = #imageLiteral(resourceName: "CardBackImage")
+                self.cardImage.alpha = 1
+            }
+            self.tapLabel.isHidden = false
         }
-        //And this makes the back of the card appear, meaning that the pack has been opened
-        UIView.animate(withDuration: 1.5, delay: 0.2, options: .curveEaseOut) {
-            self.cardImage.alpha = 1
-            self.cardImage.image = #imageLiteral(resourceName: "CardBackImage")
-        }
-        tapLabel.isHidden = false
     }
     
     //This method makes each card fade in and out
@@ -75,37 +70,55 @@ class PackOpenerVC: UIViewController {
         //Checks to see if it is the last card
         if indexOfCard < 10{
             //Fades current card out
-            UIView.animate(withDuration: 1.5, delay: 0.2, options: .curveEaseOut) {
-                self.cardImage.alpha = 0.0
-            }
+            fadeOut()
             //This is to transform the image url string into data
             //that can be used to set the imageView
-            let imageUrl = URL(string: cards[self.indexOfCard].imageString)
-            if let safeUrl = imageUrl{
-                let imageData = try! Data(contentsOf: safeUrl)
-                DispatchQueue.main.async {
-                    self.cardImage.image = UIImage(data: imageData)
-                }
+            changeCardImage()
                 indexOfCard += 1
-                UIView.animate(withDuration: 1.5, delay: 0.2, options: .curveEaseOut) {
-                    self.cardImage.alpha = 1.0
+                DispatchQueue.main.async {
+                    UIView.animate(withDuration: 1.5, delay: 0.2, options: .curveEaseOut) {
+                        self.cardImage.alpha = 1.0
+                    }
                 }
-            }
-        } else{
+            } else{
             print("No more cards")
             openPackButtonOutlet.isHidden = false
-            tapLabel.isHidden = true
+            hideNextCardButton()
             //This sets the cardImage as the logo of the selected set
-            if setLogo != nil{
-                if let logoUrl = URL(string: setLogo!){
-                    let logoData = try! Data(contentsOf: logoUrl)
-                    cardImage.image = UIImage(data: logoData)
-                }
-            }
+            displayLogo()
             //Set this to empty so that another pack can be opened
             cards = []
-            nextCardButtonOutlet.isHidden = true
         }
     }
     
+    
+    
+    func changeCardImage(){
+        let imageUrl = URL(string: cards[self.indexOfCard].imageString)
+        if let safeUrl = imageUrl{
+            let imageData = try! Data(contentsOf: safeUrl)
+            DispatchQueue.main.async {
+                self.cardImage.image = UIImage(data: imageData)
+            }
+        }
+    }
+    
+    func displayLogo(){
+        if setLogo != nil{
+            if let logoUrl = URL(string: setLogo!){
+                let logoData = try! Data(contentsOf: logoUrl)
+                DispatchQueue.main.async {
+                    self.cardImage.image = UIImage(data: logoData)
+                }
+            }
+        }
+    }
+    
+    func fadeOut(){
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 1.5, delay: 0.2, options: .curveEaseOut) {
+                self.cardImage.alpha = 0.0
+            }
+        }
+    }
 }

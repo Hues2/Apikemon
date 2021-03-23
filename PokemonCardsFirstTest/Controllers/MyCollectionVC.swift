@@ -10,13 +10,18 @@ import Firebase
 
 class MyCollectionVC: UIViewController {
     @IBOutlet weak var myCollectionTableView: UITableView!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     var myCollectionManager = MyCollectionManager()
     var cards : [Card] = []
     var listOfImageData : [Data] = []
+    var isLoading = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Your Card Collection"
+        //Hide table view and animate the indicator
+        displayLoadingIndicator()
         //Register the nib
         registerTheCell()
         //Assign the class as the delegate and data source of the table view
@@ -27,8 +32,12 @@ class MyCollectionVC: UIViewController {
             self.cards = listOfCards
             //This transforms the image strings int data
             self.listOfImageData =  self.myCollectionManager.populateImageDataList(cards: self.cards)
-            //Once the cards and imageData lists are populated, reload the tableview
-            self.myCollectionTableView.reloadData()
+            DispatchQueue.main.async {
+                //Once the cards and imageData lists are populated, reload the tableview
+                self.displayTableView()
+            }
+            
+            
         }
     }
     
@@ -39,6 +48,19 @@ class MyCollectionVC: UIViewController {
     
     func registerTheCell(){
         myCollectionTableView.register(UINib(nibName: "CardCell", bundle: nil), forCellReuseIdentifier: "CardCell")
+    }
+    
+    func displayLoadingIndicator(){
+        myCollectionTableView.isHidden = true
+        loadingIndicator.startAnimating()
+    }
+    
+    func displayTableView(){
+        myCollectionTableView.reloadData()
+        isLoading = false
+        myCollectionTableView.isHidden = false
+        loadingIndicator.stopAnimating()
+        loadingIndicator.isHidden = true
     }
 
     
@@ -71,8 +93,22 @@ extension MyCollectionVC : UITableViewDataSource{
 }
 
 //MARK: - UITableViewDelegate
-//Hnadles with the user interaction with the cells in the table
+//Handles with the user interaction with the cells in the table
 
 extension MyCollectionVC : UITableViewDelegate{
+    //Perfom segue on tap of a cell and pass through the id of the card selected
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "CollectionToCardDisplay", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "CollectionToCardDisplay"{
+            let destination = segue.destination as! CardDisplayVC
+            destination.cardName = cards[(myCollectionTableView.indexPathForSelectedRow?.row)!].name
+            destination.imageData = listOfImageData[(myCollectionTableView.indexPathForSelectedRow?.row)!]
+        }
+    }
+    
+    
     
 }

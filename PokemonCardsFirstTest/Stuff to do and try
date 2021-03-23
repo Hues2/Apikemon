@@ -42,16 +42,19 @@ Find out how to make the card collection table view not so laggy --> Done
 
 Make the saving cards to firestore a method in the model, instead of the controller --> Done
 
------------------------------------------TO-DO-----------------------------------------------------
-Display loading for the table views that take a while to load (Users collection and market)
+Display loading for the table views that take a while to load --> Done
 
-Sort cards by rarity in users collection
+Sort cards by rarity in users collection --> Done (Maybe bad time complexity)
+
+When a user clicks on a card in a table view, take them to a different screen that will display the card in big picture --> Done
+
+-----------------------------------------TO-DO-----------------------------------------------------
+
+Deselect rows in table views when pressed
+
+Add constants file
 
 Set delegates to handle api errors
-
-Call endpoint "/cards" on to display all the posible cards in a table view in Card Collection
-
-When a user clicks on a card in a table view, take them to a different screen that will display more in depth info about the card (maybe call api with the card id)
 
 In this screen add a button in top right (in navigation controller) that lets the user add the card to the market
 

@@ -13,11 +13,30 @@ class WelcomeVC: UIViewController {
     @IBOutlet weak var emailTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
     
+    @IBOutlet weak var titleLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //Do text animation here
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        //Do text animation here
+        displayTitleLabel()
+    }
+    
+    
+    func displayTitleLabel(){
+        titleLabel.text = ""
+        var charIndex = 1.0
+        let titleText = "Apikemon"
+        for letter in titleText{
+            Timer.scheduledTimer(withTimeInterval: 0.1 * charIndex, repeats: false) { (timer) in
+                self.titleLabel.text?.append(letter)
+            }
+            charIndex += 1
+
+        }
     }
     
     //If credentials are correct, user will be taken to the main page

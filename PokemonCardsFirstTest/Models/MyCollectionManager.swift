@@ -13,6 +13,9 @@ class MyCollectionManager{
     var userEmail = Auth.auth().currentUser?.email
     var cards : [Card] = []
     var dic :  [String : [String]] = [:]
+    var commonCards: [Card] = []
+    var uncommonCards : [Card] = []
+    var rareCards : [Card] = []
     
     func getCards(result : @escaping ([Card]) -> Void){
         //If user is logged in, then it loads their collection of cards
@@ -40,8 +43,10 @@ class MyCollectionManager{
                             
                         }
                         let card = Card(id: id, name: name, imageString: imageUrl, rarity: rarity)
-                        self.cards.append(card)
+                        self.addToCorrectList(card: card)
+                        //self.cards.append(card)
                     }
+                    self.groupCardsTogetherInSortedList()
                     result(self.cards)
                 }
             }
@@ -59,5 +64,22 @@ class MyCollectionManager{
             }
         }
         return list
+    }
+    
+    
+    func addToCorrectList(card : Card){
+        if card.rarity == "Common"{
+            commonCards.append(card)
+        }else if card.rarity == "Uncommon"{
+            uncommonCards.append(card)
+        }else{
+            rareCards.append(card)
+        }
+    }
+    
+    func groupCardsTogetherInSortedList(){
+        cards += commonCards
+        cards += uncommonCards
+        cards += rareCards
     }
 }
