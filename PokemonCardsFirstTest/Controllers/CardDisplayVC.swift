@@ -9,14 +9,18 @@ import UIKit
 
 class CardDisplayVC: UIViewController {
     @IBOutlet weak var cardImage: UIImageView!
-    
+
+    var cardDisplayManager = CardDisplayManager()
     var imageData : Data?
     var cardName : String?
+    var cardId : String?
+    var card : Card?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let name = cardName{
-            title = name
+
+        if let safeName = card?.name{
+            title = safeName
         }
         if let safeImageData = imageData{
             DispatchQueue.main.async {
@@ -24,5 +28,23 @@ class CardDisplayVC: UIViewController {
             }
         }
     }
+    
+    
+    @IBAction func addToMarketPressed(_ sender: UIBarButtonItem) {
+
+        if let safeCard = card{
+            cardDisplayManager.displaySellAlert(vc : self, card : safeCard)
+        }
+        
+        
+        
+    }
+    
+    @IBAction func sellButton(_ sender: UIButton) {
+        
+       
+
+    }
+    
     
 }

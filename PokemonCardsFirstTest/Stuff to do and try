@@ -50,7 +50,13 @@ When a user clicks on a card in a table view, take them to a different screen th
 
 -----------------------------------------TO-DO-----------------------------------------------------
 
-Deselect rows in table views when pressed
+Deselect rows in table views when pressed --> Done
+
+Add card to market collection when pressed sell
+Remove from users collection when pressed sell
+Take back to collection when sold
+Add spinner when adding and deleting
+Add confirmation of added to market when taken back to users collection,  maybe via another alert box and an ok button
 
 Add constants file
 
@@ -62,3 +68,7 @@ When user adds to market make a pop up confirming it
 
 Maybe add time stamp to cards added to firestore, so that users can sort their collection by most recently opened
 
+
+
+Before deleteing the card add the card and the price (Do the same method of saving the card, but add the price to the array value)
+Delete the document by the id maybe, so pass the id through the segue to the card display

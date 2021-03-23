@@ -135,7 +135,7 @@ struct PackOpenerManager{
         for card in cards{
             //Check to see if there is a logged in user (there should always be)
             if let user = self.userEmail{
-                self.db.collection("\(user)").addDocument(data: ["Card" : [card.id, card.name, card.imageString, card.rarity]]) { (error) in
+                self.db.collection("\(user)").document(card.id).setData(["Card" : [card.id, card.name, card.imageString, card.rarity]], merge: true) { (error) in
                     if let e = error{
                         print("Error saving cards to firestore, \(e.localizedDescription)")
                     }else{

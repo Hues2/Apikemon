@@ -234,7 +234,13 @@
                             <constraint firstItem="wzP-zf-SiC" firstAttribute="top" secondItem="Lwq-LR-PaD" secondAttribute="top" constant="10" id="u01-ec-gYn"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="fv2-rP-bGZ"/>
+                    <navigationItem key="navigationItem" id="fv2-rP-bGZ">
+                        <barButtonItem key="rightBarButtonItem" title="Add to Market" id="deo-jt-UIK">
+                            <connections>
+                                <action selector="addToMarketPressed:" destination="2ex-sp-12y" id="wLf-Bh-wly"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="cardImage" destination="wzP-zf-SiC" id="9s6-bk-Gsy"/>
                     </connections>

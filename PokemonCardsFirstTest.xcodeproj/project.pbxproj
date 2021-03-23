@@ -23,6 +23,7 @@
 		2E9ABD682607E02700879F46 /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9ABD672607E02700879F46 /* WelcomeVC.swift */; };
 		2E9ABD6B2607E43800879F46 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2E9ABD6A2607E43800879F46 /* GoogleService-Info.plist */; };
 		2E9ABD812607E6E600879F46 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9ABD802607E6E600879F46 /* RegisterVC.swift */; };
+		2EA9EF98260A5224001F11A4 /* CardDisplayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA9EF97260A5224001F11A4 /* CardDisplayManager.swift */; };
 		2EAA6E9B2605419000E33E24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAA6E9A2605419000E33E24 /* AppDelegate.swift */; };
 		2EAA6E9D2605419000E33E24 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAA6E9C2605419000E33E24 /* SceneDelegate.swift */; };
 		2EAA6E9F2605419000E33E24 /* ChooseSetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAA6E9E2605419000E33E24 /* ChooseSetVC.swift */; };
@@ -51,6 +52,7 @@
 		2E9ABD672607E02700879F46 /* WelcomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeVC.swift; sourceTree = "<group>"; };
 		2E9ABD6A2607E43800879F46 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2E9ABD802607E6E600879F46 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		2EA9EF97260A5224001F11A4 /* CardDisplayManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDisplayManager.swift; sourceTree = "<group>"; };
 		2EAA6E972605419000E33E24 /* PokemonCardsFirstTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokemonCardsFirstTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EAA6E9A2605419000E33E24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2EAA6E9C2605419000E33E24 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				2E46C42926068D0800F5AC8F /* Card.swift */,
 				2EBB2D7B2608A0B100C988C4 /* Props.swift */,
 				2E3FC5B42608C7FD001D4E1B /* MyCollectionManager.swift */,
+				2EA9EF97260A5224001F11A4 /* CardDisplayManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 				2E46C42A26068D0800F5AC8F /* Card.swift in Sources */,
 				2EAA6E9D2605419000E33E24 /* SceneDelegate.swift in Sources */,
 				2E9ABD812607E6E600879F46 /* RegisterVC.swift in Sources */,
+				2EA9EF98260A5224001F11A4 /* CardDisplayManager.swift in Sources */,
 				2E9ABD682607E02700879F46 /* WelcomeVC.swift in Sources */,
 				2E2EC1F32607F04F00062035 /* MainPageVC.swift in Sources */,
 				2E5A276E260971CB00F349EF /* CardDisplayVC.swift in Sources */,

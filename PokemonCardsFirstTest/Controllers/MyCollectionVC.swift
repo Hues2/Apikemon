@@ -99,13 +99,14 @@ extension MyCollectionVC : UITableViewDelegate{
     //Perfom segue on tap of a cell and pass through the id of the card selected
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "CollectionToCardDisplay", sender: self)
+        tableView.deselectRow(at: indexPath, animated: false)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "CollectionToCardDisplay"{
             let destination = segue.destination as! CardDisplayVC
-            destination.cardName = cards[(myCollectionTableView.indexPathForSelectedRow?.row)!].name
             destination.imageData = listOfImageData[(myCollectionTableView.indexPathForSelectedRow?.row)!]
+            destination.card = cards[(myCollectionTableView.indexPathForSelectedRow?.row)!]
         }
     }
     
