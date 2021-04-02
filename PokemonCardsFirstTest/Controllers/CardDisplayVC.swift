@@ -7,12 +7,7 @@
 
 import UIKit
 
-
-class CardDisplayVC: UIViewController, CardDisplayDelegate {
-    func popToCollection() {
-        navigationController?.popViewController(animated: true)
-    }
-    
+class CardDisplayVC: UIViewController {
     @IBOutlet weak var cardImage: UIImageView!
 
     var cardDisplayManager = CardDisplayManager()
@@ -21,11 +16,11 @@ class CardDisplayVC: UIViewController, CardDisplayDelegate {
     var cardId : String?
     var card : Card?
 
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         cardDisplayManager.delegate = self
-
+        //cardDisplayManager.deleteDelegate = self
         if let safeName = card?.name{
             title = safeName
         }
@@ -38,13 +33,22 @@ class CardDisplayVC: UIViewController, CardDisplayDelegate {
     
     
     @IBAction func addToMarketPressed(_ sender: UIBarButtonItem) {
-
         if let safeCard = card{
             cardDisplayManager.displaySellAlert(vc : self, card : safeCard)
+            sender.title = "Adding to market..."
         }
         
-        
-        
     }
-    
 }
+
+
+//MARK: - Card Display Manager
+//Pops off the top view (takes user bac to their card collection)
+
+extension CardDisplayVC : CardDisplayDelegate{
+    func popToCollection() {
+        navigationController?.popViewController(animated: true)
+    }
+}
+
+

@@ -10,10 +10,10 @@ import UIKit
 class ChooseSetVC: UIViewController {
     
     @IBOutlet weak var setsTableView: UITableView!
-
+    
     var setsManager = SetsManager()
     var listOfSets : [SetOfCards] = []
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Pick a set"
@@ -23,14 +23,20 @@ class ChooseSetVC: UIViewController {
         //This next method does not get called until the closure has the result
         //When it does have the result (in this case I named it list)
         //I use it to populate the list and then can reload the table
-        setsManager.fetchSets { (list) in
-            self.listOfSets = list
-            DispatchQueue.main.async {
-                self.setsTableView.reloadData()
+        setsManager.fetchSets { (list, error) in
+            if let safeError = error{
+                print(safeError)
+            }else{
+                if let safeList = list{
+                    self.listOfSets = safeList
+                    DispatchQueue.main.async {
+                        self.setsTableView.reloadData()
+                    }
+                }
             }
         }
     }
- 
+    
 }
 
 
@@ -43,7 +49,7 @@ extension ChooseSetVC : UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return listOfSets.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let name = listOfSets[indexPath.row].name
         let cell = tableView.dequeueReusableCell(withIdentifier: "setCell", for: indexPath)

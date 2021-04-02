@@ -8,7 +8,8 @@
 import Foundation
 import Firebase
 
-class MyCollectionManager{
+class MyCollectionManager {    
+    
     let db = Firestore.firestore()
     var userEmail = Auth.auth().currentUser?.email
     var cards : [Card] = []
@@ -16,6 +17,7 @@ class MyCollectionManager{
     var commonCards: [Card] = []
     var uncommonCards : [Card] = []
     var rareCards : [Card] = []
+
     
     func getCards(result : @escaping ([Card]) -> Void){
         //If user is logged in, then it loads their collection of cards
@@ -59,7 +61,7 @@ class MyCollectionManager{
         for card in self.cards{
             let imageString = card.imageString
             if let imageUrl = URL(string: imageString){
-            let data = try! Data(contentsOf: imageUrl)
+                let data = try! Data(contentsOf: imageUrl)
                 list.append(data)
             }
         }

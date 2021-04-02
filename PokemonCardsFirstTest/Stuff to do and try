@@ -57,13 +57,15 @@ Take back to collection when sold --> Done
 
 Deselect rows in table views when pressed --> Done
 
-
+When a card has been added to market and removed the document from the users collection, the card still appears
+in the users card collection, so maybe inistead of making another api fetch when the delegate pops the user back to the collection, just remove the card from the array in the user card collection controller and reload the table view -->Done
 
 -----------------------------------------TO-DO-----------------------------------------------------
 
+Where the delegate is called to pop back to card collection,
+add an alert that appears saying that it has been deleted
 
-Add spinner when adding and deleting
-Add confirmation of added to market when taken back to users collection,  maybe via another alert box and an ok button
+If the card doesn't get deleted then show an alert in the card display saying that it has not been deleted
 
 Add constants file
 
@@ -71,8 +73,9 @@ Set delegates to handle api errors
 
 Make alerts for networking errors and loading from database errors
 
-When user adds to market make a pop up confirming it
-
 Maybe add time stamp to cards added to firestore, so that users can sort their collection by most recently opened
 
 Make users have a document called wallet that contains just a number, for example: ["Amount" : 50]. Add this when the user registers
+
+In API calls if there is an error, return an error in the escaping closure, and then in the controllers
+when calling the fetch function, check if the closure returns an error.

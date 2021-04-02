@@ -13,7 +13,7 @@ struct SetsManager{
     //This method fetches all the sets from the API
     //Result is an escaping closure, which means that it waits for the function to finish
     //to "set" the result.
-    func fetchSets(result : @escaping ([SetOfCards]) -> Void){
+    func fetchSets(result : @escaping ([SetOfCards]?, Error?) -> Void){
         //Create url
         if let url = URL(string: apiUrl){
             
@@ -30,6 +30,7 @@ struct SetsManager{
                 //If there is an error print it and cancel the closure
                 if let e = error{
                     print(e)
+                    result(nil, error)
                     return
                 }else{
                     //If the data isn't nil, then call the parse JSON method
@@ -43,8 +44,12 @@ struct SetsManager{
                                 let set = SetOfCards(id: id, name: name, logo: logo)
                                 listOfSets.append(set)
                             }
-                            result(listOfSets)
+                            result(listOfSets, nil)
+                        }else{
+                            result(nil, error)
                         }
+                    }else{
+                        result(nil, error)
                     }
                 }
             }

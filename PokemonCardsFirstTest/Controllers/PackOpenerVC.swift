@@ -74,13 +74,13 @@ class PackOpenerVC: UIViewController {
             //This is to transform the image url string into data
             //that can be used to set the imageView
             changeCardImage()
-                indexOfCard += 1
-                DispatchQueue.main.async {
-                    UIView.animate(withDuration: 1.5, delay: 0.2, options: .curveEaseOut) {
-                        self.cardImage.alpha = 1.0
-                    }
+            indexOfCard += 1
+            DispatchQueue.main.async {
+                UIView.animate(withDuration: 1.5, delay: 0.2, options: .curveEaseOut) {
+                    self.cardImage.alpha = 1.0
                 }
-            } else{
+            }
+        } else{
             print("No more cards")
             openPackButtonOutlet.isHidden = false
             hideNextCardButton()
@@ -96,9 +96,13 @@ class PackOpenerVC: UIViewController {
     func changeCardImage(){
         let imageUrl = URL(string: cards[self.indexOfCard].imageString)
         if let safeUrl = imageUrl{
-            let imageData = try! Data(contentsOf: safeUrl)
-            DispatchQueue.main.async {
-                self.cardImage.image = UIImage(data: imageData)
+            
+            if let imageData = try? Data(contentsOf: safeUrl){
+                DispatchQueue.main.async {
+                    self.cardImage.image = UIImage(data: imageData)
+                }
+            }else{
+                print("Error opening pack")
             }
         }
     }
@@ -106,9 +110,12 @@ class PackOpenerVC: UIViewController {
     func displayLogo(){
         if setLogo != nil{
             if let logoUrl = URL(string: setLogo!){
-                let logoData = try! Data(contentsOf: logoUrl)
+                if let logoData = try? Data(contentsOf: logoUrl){
                 DispatchQueue.main.async {
                     self.cardImage.image = UIImage(data: logoData)
+                }
+                }else{
+                    print("Error shwoing image of card")
                 }
             }
         }

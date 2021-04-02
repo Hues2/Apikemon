@@ -17,6 +17,8 @@ class MyCollectionVC: UIViewController {
     var listOfImageData : [Data] = []
     var isLoading = true
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Your Card Collection"
@@ -28,6 +30,7 @@ class MyCollectionVC: UIViewController {
         asignDelegates()
         //Fetch the API data
         myCollectionManager.getCards { (listOfCards) in
+            //THIS IS WHERE I NEED TO IMPLEMENT AN ERROR HANDLER IF THE listOfCards GIVE BACK AN ERROR INSTEAD OF A LIST
             //This populates the list of the users cards
             self.cards = listOfCards
             //This transforms the image strings int data
@@ -36,8 +39,6 @@ class MyCollectionVC: UIViewController {
                 //Once the cards and imageData lists are populated, reload the tableview
                 self.displayTableView()
             }
-            
-            
         }
     }
     
@@ -62,12 +63,12 @@ class MyCollectionVC: UIViewController {
         loadingIndicator.stopAnimating()
         loadingIndicator.isHidden = true
     }
-
     
     
+//    override func viewWillAppear(_ animated: Bool) {
+//        print("Back on screen!!!!!!!!")
+//    }
 }
-
-
 
 
 //MARK: - UITableViewDataSource
@@ -87,7 +88,7 @@ extension MyCollectionVC : UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "CardCell", for: indexPath) as! CardCell
         cell.cardNameLabel.text = name
         cell.rightImageView.image = UIImage(data: image)
-
+        
         return cell
     }
 }
@@ -107,9 +108,31 @@ extension MyCollectionVC : UITableViewDelegate{
             let destination = segue.destination as! CardDisplayVC
             destination.imageData = listOfImageData[(myCollectionTableView.indexPathForSelectedRow?.row)!]
             destination.card = cards[(myCollectionTableView.indexPathForSelectedRow?.row)!]
+            //This sets this VC as the delegate in the prepare method
+            destination.cardDisplayManager.deleteDelegate = self
         }
     }
-    
+}
+
+
+//MARK: - Card Dislpay Delete Delegate
+//This runs when the card is added to the market, and this removes the card from the 'cards' list
+//so that the card isn't in the list when the user is popped back to their collection
+
+extension MyCollectionVC : CardDisplayDeleteDelegate{
+    func removeCard(cardId: String, imageString : String) {
+        //When this closure returns true it will remove that particular card
+        cards.removeAll { (card) -> Bool in
+            return card.id == cardId
+        }
+        //When it returns true it will remove that image data from the list
+        listOfImageData.removeAll { (imageUrlData) -> Bool in
+            let testUrl = URL(string: imageString)!
+            let testData = try! Data(contentsOf: testUrl)
+            return imageUrlData == testData
+        }
+        myCollectionTableView.reloadData()
+    }
     
     
 }
